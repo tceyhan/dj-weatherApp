@@ -23,7 +23,7 @@ def home(request):
                 messages.success(request,"City created")
         else:
             messages.error(request, "The is no city")
-        return redirect('home')
+        return redirect('index')
 
     
     city_data= []
@@ -47,10 +47,10 @@ def home(request):
         'city_data':city_data,
     }
     
-    return render(request, 'weatherapp/home.html', context)
+    return render(request, 'weatherapp/index.html', context)
 
 def delete_city(request, id):
     city = get_object_or_404(City, id=id)
     city.delete()
     messages.success(request, "City deleted")
-    return redirect('home')
+    return redirect('index')
